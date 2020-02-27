@@ -39,3 +39,9 @@
     color: #393943;
     cursor: pointer;
 }
+
+@media screen and (max-width: 713px) {
+    .Checkbox__container {
+        width: 80%;
+    }
+  }

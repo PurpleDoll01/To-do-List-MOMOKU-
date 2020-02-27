@@ -13,6 +13,7 @@ body {
     width: 838px;
     height: 275px;
     background-color: blue;
+    margin: 0 20px;
     margin-top: 19px;
     opacity: 0.72;
     border-radius: 15px;
@@ -151,3 +152,23 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 713px) {
+    .Hero__container, .Content__container, .List {
+        width: 80%;
+    }
+
+    .Hero__description {
+        width: 100%;
+        font-size: 29px; 
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+
+    .Hero__description {
+        width: 100%;
+        font-size: 25px; 
+    }
+  }

@@ -22,7 +22,7 @@ const Home = (props) => {
         const [ inputTask, setInputTask ] = React.useState('Comida rica');
         return { inputTask, setInputTask }
     }
-    
+
 
 
     return (
@@ -60,16 +60,12 @@ const Home = (props) => {
                     </form>  
                 </div>       
             </section>
-
-            
-                <section className="List">
+            <section className="List">
                 {props.tasks.map(data => (
-                    <Link className="List__link" to={`/details/${data.task}`} key={data.task}>
-                        <List 
+                    <List 
                         data={data}
                         key={data.task}
                     /> 
-                    </Link> 
                 ))}
             </section>
 

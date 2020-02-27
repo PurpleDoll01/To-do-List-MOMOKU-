@@ -1,6 +1,6 @@
 import { TRAER_TODOS } from '../types/tasksTypes';
 
-const INITIAL_STATE = { tasks: [{'task': 'Comer chocolate'}]};
+const INITIAL_STATE = { tasks: []};
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {

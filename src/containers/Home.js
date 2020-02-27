@@ -7,12 +7,22 @@ import { Link } from 'react-router-dom';
 import * as tasksActions from '../actions/tasksActions';
 
 const Home = (props) => {
+    const { inputTask, setInputTask } = useData()
+
+    function handleChange(e) {
+        setInputTask(e.target.value)
+    }
     
     function handleSubmit(event) {
         event.preventDefault()
-        props.traerTasks('Datos');
-        console.log(event.target.value);
+        props.traerTasks(inputTask);
     }
+
+    function useData () {
+        const [ inputTask, setInputTask ] = React.useState('Comida rica');
+        return { inputTask, setInputTask }
+    }
+    
 
 
     return (
@@ -39,6 +49,7 @@ const Home = (props) => {
 
                     <form onSubmit={handleSubmit} className="Input__container">
                         <input 
+                        onChange={handleChange}
                         className="Content__input"
                         type="text" 
                         placeholder="Eje: Comprar materiales para trabajar"

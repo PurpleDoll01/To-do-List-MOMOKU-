@@ -24,7 +24,9 @@ const Home = (props) => {
             "checked": false,
             "notes": "",
             "text": ""
-        })  
+        }) 
+        setTimeout(function(){ props.traerTasks(); }, 1000); 
+        
     }
 
     function useData () {
@@ -36,7 +38,7 @@ const Home = (props) => {
         useEffect( () => {
             props.traerTasks();
     
-        }, [inputTask]);
+        }, []);
 
         return { inputTask, setInputTask }
     }

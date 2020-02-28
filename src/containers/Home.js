@@ -47,6 +47,11 @@ const Home = (props) => {
         return { inputTask, setInputTask }
     }
 
+    let className = 'Content__button';
+    if (inputTask.text) {
+        className += ' Show';
+    }
+
     return (
         <>
             <section className="Hero">
@@ -79,7 +84,7 @@ const Home = (props) => {
                         />
                         <button 
                         type="submit"
-                        className="Content__button">Añadir tarea</button>
+                        className={className}>Añadir tarea</button>
                     </form>  
                 </div>       
             </section>

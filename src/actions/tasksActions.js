@@ -25,11 +25,11 @@ export const postTasks = (data) => async (dispatch) => {
         type: 'CARGANDO'
     });
     try {
-        const respuesta = await axios({
+        await axios({
             method: 'post',
             url: 'https://monoku-tasks.herokuapp.com/R1OvSQOyETZseTHSEw3E/add',
             data: data
-          });
+        });
 
         dispatch({
            type: ADDED

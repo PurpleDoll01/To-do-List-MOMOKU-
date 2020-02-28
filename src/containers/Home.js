@@ -6,6 +6,8 @@ import List from '../components/List';
 import * as tasksActions from '../actions/tasksActions';
 
 const Home = (props) => {
+
+    console.log(props.tasks)
     
     const { inputTask, setInputTask } = useData()
 
@@ -36,7 +38,9 @@ const Home = (props) => {
             "text": ""
         });
         useEffect( () => {
-            props.traerTasks();
+            if(!props.tasks.length) {
+                props.traerTasks();
+            }
     
         }, []);
 

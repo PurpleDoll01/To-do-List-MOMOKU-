@@ -1,29 +1,45 @@
-import React from 'react';
+import React, { useEffect }  from 'react';
 import '../styles/Home.css';
 import { connect } from 'react-redux';
 import List from '../components/List';
-import { Link } from 'react-router-dom';
 
 import * as tasksActions from '../actions/tasksActions';
 
 const Home = (props) => {
+    
     const { inputTask, setInputTask } = useData()
 
     function handleChange(e) {
-        setInputTask(e.target.value)
+        setInputTask({
+            "checked": false,
+            "notes": "",
+            "text": e.target.value
+        })
     }
     
     function handleSubmit(event) {
         event.preventDefault()
-        props.traerTasks(inputTask);
+        props.postTasks(inputTask); 
+        setInputTask({
+            "checked": false,
+            "notes": "",
+            "text": ""
+        })  
     }
 
     function useData () {
-        const [ inputTask, setInputTask ] = React.useState('Comida rica');
+        const [ inputTask, setInputTask ] = React.useState({
+            "checked": false,
+            "notes": "",
+            "text": ""
+        });
+        useEffect( () => {
+            props.traerTasks();
+    
+        }, [inputTask]);
+
         return { inputTask, setInputTask }
     }
-
-
 
     return (
         <>
@@ -49,6 +65,7 @@ const Home = (props) => {
 
                     <form onSubmit={handleSubmit} className="Input__container">
                         <input 
+                        value={inputTask.text}
                         onChange={handleChange}
                         className="Content__input"
                         type="text" 
@@ -60,11 +77,18 @@ const Home = (props) => {
                     </form>  
                 </div>       
             </section>
+
+            {!props.tasks.length && (
+                <div className="Lacking">
+                    <p className="Lacking__text" >No has añadido ninguna tarea hasta el momento</p>
+                </div>
+            )}
+                    
             <section className="List">
                 {props.tasks.map(data => (
                     <List 
                         data={data}
-                        key={data.task}
+                        key={data.id}
                     /> 
                 ))}
             </section>

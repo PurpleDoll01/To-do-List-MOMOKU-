@@ -46,13 +46,15 @@
     text-decoration:line-through;
 }
 
-.Division2__container img {
+.Checkbox__image {
     display: none;
+    width: 30px;
 }
 
 .Checkbox__container:hover .Checkbox__image  {
-    background-color: red;
+    fill: red;
     display: flex;
+    cursor: pointer;
 }
 @media screen and (max-width: 713px) {
     .Checkbox__container {

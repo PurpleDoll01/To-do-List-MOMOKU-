@@ -2,6 +2,7 @@ import React, { useEffect }  from 'react';
 import '../styles/Home.css';
 import { connect } from 'react-redux';
 import List from '../components/List';
+import Loading from '../components/Loading';
 
 import * as tasksActions from '../actions/tasksActions';
 
@@ -27,7 +28,8 @@ const Home = (props) => {
             "notes": "",
             "text": ""
         }) 
-        setTimeout(function(){ props.traerTasks(); }, 1000); 
+        //Esto puede cambiar con un loading mientras cargue
+        setTimeout(function(){ props.traerTasks(); }, 1200); 
         
     }
 
@@ -89,7 +91,11 @@ const Home = (props) => {
                 </div>       
             </section>
 
-            {!props.tasks.length && (
+            {props.loading && (
+                <Loading/>
+            )}
+
+            {!props.tasks.length && !props.loading && (
                 <div className="Lacking">
                     <p className="Lacking__text" >No has añadido ninguna tarea hasta el momento</p>
                 </div>
@@ -99,7 +105,7 @@ const Home = (props) => {
                 {props.tasks.map(data => (
                     <List 
                         data={data}
-                        key={data.id}
+                        key={data._id}
                     /> 
                 ))}
             </section>

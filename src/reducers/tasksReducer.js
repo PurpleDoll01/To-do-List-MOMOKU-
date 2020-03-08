@@ -1,4 +1,4 @@
-import { TRAER_TODOS, ADDED} from '../types/tasksTypes';
+import { TRAER_TODOS} from '../types/tasksTypes';
 
 const INITIAL_STATE = { tasks: []};
 
@@ -7,8 +7,11 @@ export default (state = INITIAL_STATE, action) => {
         case TRAER_TODOS:
             return { 'tasks': action.payload}
 
-        case ADDED:
-            return state;
+        case 'CARGANDO':
+                return { 'loading': 'Loading', 'tasks': [] }
+
+        case 'CARGANDO__TASK':
+                return { 'loadingTask': 'Loading', 'tasks': [] }
 
         default: return state;
     }

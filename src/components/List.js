@@ -19,9 +19,7 @@ const List = (props) => {
         }
         props.editTasks({checked: isChecked}, props.data._id);
         //Esto puede cambiar por un login mientras envía a base de datos
-        setTimeout(function(){ props.traerTasks(); }, 400);
-
-        
+        setTimeout(function(){ props.traerTasks(); }, 500);     
     }
 
     function handleRemove() {

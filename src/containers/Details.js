@@ -8,11 +8,12 @@ import * as tasksActions from '../actions/tasksActions';
 
 const Details = (props) => {
     let { task } = useParams();
+    let { traerTask } = props; 
 
     useEffect( () => {
-        props.traerTask(task);
+        traerTask(task);
     
-    }, [props, task]);
+    }, [task, traerTask]);
 
     const [ modifyNotes, setModifyNotes ] = React.useState({
         "notes": ""
@@ -29,9 +30,6 @@ const Details = (props) => {
         props.editTasks(modifyNotes, task);  
         setTimeout(function(){ props.traerTask(task); }, 400); 
     }
-
-
-    console.log(modifyNotes);
     
 
     return (

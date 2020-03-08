@@ -28,7 +28,8 @@ const Home = (props) => {
             "notes": "",
             "text": ""
         }) 
-        setTimeout(function(){ props.traerTasks(); }, 600);
+        //Esto puede cambiar con un loading mientras cargue
+        setTimeout(function(){ props.traerTasks(); }, 1200); 
         
     }
 
